@@ -17,29 +17,48 @@ export const useTheme = () => {
 };
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  useEffect(() => {
-    // Check for saved theme preference or default to light mode
+  // Initialize state based on localStorage or system preference
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    // Check localStorage first
     const savedTheme = localStorage.getItem('tracttutor_theme');
-    if (savedTheme === 'dark') {
-      setIsDarkMode(true);
-      document.documentElement.classList.add('dark');
+    if (savedTheme) {
+      return savedTheme === 'dark';
     }
+    // Fall back to system preference
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  });
+
+  // Apply theme to DOM whenever isDarkMode changes
+  useEffect(() => {
+    const root = document.documentElement;
+    
+    if (isDarkMode) {
+      root.classList.add('dark');
+      localStorage.setItem('tracttutor_theme', 'dark');
+    } else {
+      root.classList.remove('dark');
+      localStorage.setItem('tracttutor_theme', 'light');
+    }
+  }, [isDarkMode]);
+
+  // Listen for system theme changes
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    const handleChange = (e: MediaQueryListEvent) => {
+      // Only update if no theme is explicitly saved
+      const savedTheme = localStorage.getItem('tracttutor_theme');
+      if (!savedTheme) {
+        setIsDarkMode(e.matches);
+      }
+    };
+
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
 
   const toggleDarkMode = () => {
-    setIsDarkMode(prev => {
-      const newMode = !prev;
-      if (newMode) {
-        document.documentElement.classList.add('dark');
-        localStorage.setItem('tracttutor_theme', 'dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-        localStorage.setItem('tracttutor_theme', 'light');
-      }
-      return newMode;
-    });
+    setIsDarkMode(prev => !prev);
   };
 
   return (
