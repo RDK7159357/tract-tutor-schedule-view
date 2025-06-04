@@ -1,9 +1,26 @@
 pipeline {
     agent any
     
-    tools {
-        nodejs 'Node18'
+stage('Install Dependencies') {
+    steps {
+        // Install Node.js 18 manually
+        sh '''
+            curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+            sudo apt-get install -y nodejs
+            node -v
+            npm -v
+        '''
+
+        // Install frontend dependencies
+        sh 'npm install'
+
+        // Install backend dependencies
+        dir('backend') {
+            sh 'npm install'
+        }
     }
+}
+
     
     environment {
         AWS_REGION = 'ap-south-1'
