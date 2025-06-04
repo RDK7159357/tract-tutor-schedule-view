@@ -1,0 +1,1228 @@
+{
+    "Faculty": [
+      {
+        "faculty_id": "IARE10567",
+        "name": "Dr. K Suvarchala",
+        "department": "Computer Science and Engineering",
+        "email": null,
+        "contact_number": null
+      },
+      {
+        "faculty_id": "IARE10996",
+        "name": "Mr. Achyuta Suresh babu",
+        "department": "Computer Science and Engineering",
+        "email": null,
+        "contact_number": null
+      },
+      {
+        "faculty_id": "IARE11139",
+        "name": "Ms. CH Prabhavathi",
+        "department": "Computer Science and Engineering",
+        "email": null,
+        "contact_number": null
+      },
+      {
+        "faculty_id": "IARE11088",
+        "name": "Dr. S Janardhana Rao",
+        "department": "Computer Science and Engineering",
+        "email": null,
+        "contact_number": null
+      },
+      {
+        "faculty_id": "IARE10966",
+        "name": "Dr. C Madhusudhana Rao",
+        "department": "Computer Science and Engineering",
+        "email": null,
+        "contact_number": null
+      },
+      {
+        "faculty_id": "IARE10836",
+        "name": "Mr. M Hari Krishna",
+        "department": "Computer Science and Engineering",
+        "email": null,
+        "contact_number": null
+      },
+      {
+        "faculty_id": "IARE10670",
+        "name": "Dr. T Varalakshmi",
+        "department": "Computer Science and Engineering",
+        "email": null,
+        "contact_number": null
+      },
+      {
+        "faculty_id": "IARE10862",
+        "name": "Dr. M Lakshmi Prasad",
+        "department": "Computer Science and Engineering",
+        "email": null,
+        "contact_number": null
+      },
+      {
+        "faculty_id": "IARE10686",
+        "name": "Dr. P Govardhan",
+        "department": "Computer Science and Engineering",
+        "email": null,
+        "contact_number": null
+      },
+      {
+        "faculty_id": "IARE10750",
+        "name": "Ms. K Aswini",
+        "department": "Computer Science and Engineering",
+        "email": null,
+        "contact_number": null
+      },
+      {
+        "faculty_id": "IARE11123",
+        "name": "Ms. K Mounika",
+        "department": "Computer Science and Engineering",
+        "email": null,
+        "contact_number": null
+      },
+      {
+        "faculty_id": "DRJ",
+        "name": "Ms. D Rajani",
+        "department": "Computer Science and Engineering",
+        "email": null,
+        "contact_number": null
+      },
+      {
+        "faculty_id": "BMD",
+        "name": "Dr. B Madhavi Devi",
+        "department": "Computer Science and Engineering",
+        "email": null,
+        "contact_number": null
+      },
+      {
+        "faculty_id": "KJT",
+        "name": "Ms. K Jyothi",
+        "department": "Computer Science and Engineering",
+        "email": null,
+        "contact_number": null
+      },
+      {
+        "faculty_id": "MSN",
+        "name": "Mr. Suryanarayana Rao",
+        "department": "Computer Science and Engineering",
+        "email": null,
+        "contact_number": null
+      },
+      {
+        "faculty_id": "BKA",
+        "name": "Ms. B K Aishwarya",
+        "department": "Computer Science and Engineering",
+        "email": null,
+        "contact_number": null
+      },
+      {
+        "faculty_id": "PLN",
+        "name": "Dr. P Lavanya",
+        "department": "Computer Science and Engineering",
+        "email": null,
+        "contact_number": null
+      },
+      {
+        "faculty_id": "VVR",
+        "name": "Mr. V Venkat Reddy",
+        "department": "Computer Science and Engineering",
+        "email": null,
+        "contact_number": null
+      },
+      {
+        "faculty_id": "IARE10989",
+        "name": "Mr. T Roopesh Kumar",
+        "department": "Computer Science and Engineering",
+        "email": null,
+        "contact_number": null
+      },
+      {
+        "faculty_id": "IARE10879",
+        "name": "Dr. Ch V Rama Padmaja",
+        "department": "Computer Science and Engineering",
+        "email": null,
+        "contact_number": null
+      },
+      {
+        "faculty_id": "IARE10188",
+        "name": "Mr. N Rajasekhar",
+        "department": "Computer Science and Engineering",
+        "email": null,
+        "contact_number": null
+      },
+      {
+        "faculty_id": "IARE10794",
+        "name": "Dr. B J D Kalyani",
+        "department": "Computer Science and Engineering",
+        "email": null,
+        "contact_number": null
+      },
+      {
+        "faculty_id": "IARE10895",
+        "name": "Ms. K Sangeeta",
+        "department": "Computer Science and Engineering",
+        "email": null,
+        "contact_number": null
+      },
+      {
+        "faculty_id": "IARE11155",
+        "name": "Ms. R. Soumika",
+        "department": "Computer Science and Engineering",
+        "email": null,
+        "contact_number": null
+      },
+      {
+        "faculty_id": "IARE10995",
+        "name": "Dr. P Lavanya",
+        "department": "Computer Science and Engineering",
+        "email": null,
+        "contact_number": null
+      },
+      {
+        "faculty_id": "IARE10579",
+        "name": "Dr. RM Noorullah",
+        "department": "Computer Science and Engineering",
+        "email": null,
+        "contact_number": null
+      },
+      {
+        "faculty_id": "IARE10739",
+        "name": "Ms. A Harika",
+        "department": "Computer Science and Engineering",
+        "email": null,
+        "contact_number": null
+      },
+      {
+        "faculty_id": "IARE10033",
+        "name": "Dr. K Laxminarayanamma",
+        "department": "Computer Science and Engineering",
+        "email": null,
+        "contact_number": null
+      },
+      {
+        "faculty_id": "IARE10903",
+        "name": "Ms. G Lalitha",
+        "department": "Computer Science and Engineering",
+        "email": null,
+        "contact_number": null
+      },
+      {
+        "faculty_id": "IARE10991",
+        "name": "Ms. S Kavitha",
+        "department": "Computer Science and Engineering",
+        "email": null,
+        "contact_number": null
+      },
+      {
+        "faculty_id": "IARE10894",
+        "name": "Mr. CH Vijayendar Reddy",
+        "department": "Computer Science and Engineering",
+        "email": null,
+        "contact_number": null
+      },
+      {
+        "faculty_id": "IARE10324",
+        "name": "Dr. Y Mohana Roopa",
+        "department": "Computer Science and Engineering",
+        "email": null,
+        "contact_number": null
+      }
+    ],
+    "Courses": [
+      {
+        "course_code": "ACSD13",
+        "course_name": "Design and Analysis of Algorithms",
+        "course_type": "Theory",
+        "department": "Computer Science and Engineering"
+      },
+      {
+        "course_code": "ACSD14",
+        "course_name": "Web Systems Engineering",
+        "course_type": "Theory",
+        "department": "Computer Science and Engineering"
+      },
+      {
+        "course_code": "ACSD15",
+        "course_name": "Object Oriented Software Engineering",
+        "course_type": "Theory",
+        "department": "Computer Science and Engineering"
+      },
+      {
+        "course_code": "AITD03",
+        "course_name": "Database Management Systems",
+        "course_type": "Theory",
+        "department": "Computer Science and Engineering"
+      },
+      {
+        "course_code": "AITD04",
+        "course_name": "Computer Networks",
+        "course_type": "Theory",
+        "department": "Computer Science and Engineering"
+      },
+      {
+        "course_code": "ACSD16",
+        "course_name": "Design and Analysis of Algorithms Laboratory",
+        "course_type": "Laboratory",
+        "department": "Computer Science and Engineering"
+      },
+      {
+        "course_code": "ACSD17",
+        "course_name": "Web Systems Engineering Laboratory",
+        "course_type": "Laboratory",
+        "department": "Computer Science and Engineering"
+      },
+      {
+        "course_code": "AITD05",
+        "course_name": "Database Management Systems Laboratory",
+        "course_type": "Laboratory",
+        "department": "Computer Science and Engineering"
+      },
+      {
+        "course_code": "ACSD18",
+        "course_name": "DevOps Engineer",
+        "course_type": "Theory",
+        "department": "Computer Science and Engineering"
+      },
+      {
+        "course_code": "AHSD15",
+        "course_name": "Managerial Economics and financial Analysis",
+        "course_type": "Theory",
+        "department": "Computer Science and Engineering"
+      }
+    ],
+    "Rooms": [
+      {
+        "room_number": "1101",
+        "building": null,
+        "capacity": null,
+        "equipment": null
+      },
+      {
+        "room_number": "1115",
+        "building": null,
+        "capacity": null,
+        "equipment": null
+      },
+      {
+        "room_number": "2006",
+        "building": null,
+        "capacity": null,
+        "equipment": null
+      },
+      {
+        "room_number": "2101",
+        "building": null,
+        "capacity": null,
+        "equipment": null
+      },
+      {
+        "room_number": "1111",
+        "building": null,
+        "capacity": null,
+        "equipment": null
+      },
+      {
+        "room_number": "1112",
+        "building": null,
+        "capacity": null,
+        "equipment": null
+      },
+      {
+        "room_number": "1108",
+        "building": null,
+        "capacity": null,
+        "equipment": null
+      },
+      {
+        "room_number": "1110",
+        "building": null,
+        "capacity": null,
+        "equipment": null
+      },
+      {
+        "room_number": "1206",
+        "building": null,
+        "capacity": null,
+        "equipment": null
+      },
+      {
+        "room_number": "7009",
+        "building": null,
+        "capacity": null,
+        "equipment": null
+      },
+      {
+        "room_number": "1209",
+        "building": null,
+        "capacity": null,
+        "equipment": null
+      },
+      {
+        "room_number": "1402",
+        "building": null,
+        "capacity": null,
+        "equipment": null
+      }
+    ],
+    "TimeSlots": [
+      {
+        "slot_id": 1,
+        "start_time": "09:45:00",
+        "end_time": "10:40:00"
+      },
+      {
+        "slot_id": 2,
+        "start_time": "10:40:00",
+        "end_time": "11:35:00"
+      },
+      {
+        "slot_id": 3,
+        "start_time": "11:35:00",
+        "end_time": "12:30:00"
+      },
+      {
+        "slot_id": 4,
+        "start_time": "13:25:00",
+        "end_time": "14:20:00"
+      },
+      {
+        "slot_id": 5,
+        "start_time": "14:20:00",
+        "end_time": "15:15:00"
+      },
+      {
+        "slot_id": 6,
+        "start_time": "15:15:00",
+        "end_time": "16:10:00"
+      },
+      {
+        "slot_id": 1,
+        "start_time": "09:45:00",
+        "end_time": "10:40:00"
+      },
+      {
+        "slot_id": 2,
+        "start_time": "10:40:00",
+        "end_time": "11:35:00"
+      },
+      {
+        "slot_id": 3,
+        "start_time": "11:35:00",
+        "end_time": "12:30:00"
+      },
+      {
+        "slot_id": 4,
+        "start_time": "13:25:00",
+        "end_time": "14:20:00"
+      },
+      {
+        "slot_id": 5,
+        "start_time": "14:20:00",
+        "end_time": "15:15:00"
+      },
+      {
+        "slot_id": 6,
+        "start_time": "15:15:00",
+        "end_time": "16:10:00"
+      },
+      {
+        "slot_id": 1,
+        "start_time": "09:30:00",
+        "end_time": "10:25:00"
+      },
+      {
+        "slot_id": 2,
+        "start_time": "10:25:00",
+        "end_time": "11:20:00"
+      },
+      {
+        "slot_id": 3,
+        "start_time": "11:20:00",
+        "end_time": "12:15:00"
+      },
+      {
+        "slot_id": 4,
+        "start_time": "13:15:00",
+        "end_time": "14:10:00"
+      },
+      {
+        "slot_id": 5,
+        "start_time": "14:10:00",
+        "end_time": "15:05:00"
+      },
+      {
+        "slot_id": 6,
+        "start_time": "15:05:00",
+        "end_time": "16:00:00"
+      },
+      {
+        "slot_id": 1,
+        "start_time": "09:45:00",
+        "end_time": "10:40:00"
+      },
+      {
+        "slot_id": 2,
+        "start_time": "10:40:00",
+        "end_time": "11:35:00"
+      },
+      {
+        "slot_id": 3,
+        "start_time": "11:35:00",
+        "end_time": "12:30:00"
+      },
+      {
+        "slot_id": 4,
+        "start_time": "13:25:00",
+        "end_time": "14:20:00"
+      },
+      {
+        "slot_id": 5,
+        "start_time": "14:20:00",
+        "end_time": "15:15:00"
+      },
+      {
+        "slot_id": 6,
+        "start_time": "15:15:00",
+        "end_time": "16:10:00"
+      },
+      {
+        "slot_id": 1,
+        "start_time": "09:45:00",
+        "end_time": "10:40:00"
+      },
+      {
+        "slot_id": 2,
+        "start_time": "10:40:00",
+        "end_time": "11:35:00"
+      },
+      {
+        "slot_id": 3,
+        "start_time": "11:35:00",
+        "end_time": "12:30:00"
+      },
+      {
+        "slot_id": 4,
+        "start_time": "13:25:00",
+        "end_time": "14:20:00"
+      },
+      {
+        "slot_id": 5,
+        "start_time": "14:20:00",
+        "end_time": "15:15:00"
+      },
+      {
+        "slot_id": 6,
+        "start_time": "15:15:00",
+        "end_time": "16:10:00"
+      },
+      {
+        "slot_id": 1,
+        "start_time": "09:45:00",
+        "end_time": "10:40:00"
+      },
+      {
+        "slot_id": 2,
+        "start_time": "10:40:00",
+        "end_time": "11:35:00"
+      },
+      {
+        "slot_id": 3,
+        "start_time": "11:35:00",
+        "end_time": "12:30:00"
+      },
+      {
+        "slot_id": 4,
+        "start_time": "13:25:00",
+        "end_time": "14:20:00"
+      },
+      {
+        "slot_id": 5,
+        "start_time": "14:20:00",
+        "end_time": "15:15:00"
+      },
+      {
+        "slot_id": 6,
+        "start_time": "15:15:00",
+        "end_time": "16:10:00"
+      }
+    ],
+    "CourseSchedule": [
+      {
+        "schedule_id": 1,
+        "course_code": "AITD04",
+        "faculty_id": "IARE10966",
+        "room_number": "1101",
+        "day_of_week": "Monday",
+        "time_slot_id": 1,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 2,
+        "course_code": "ACSD15",
+        "faculty_id": "IARE11139",
+        "room_number": "1101",
+        "day_of_week": "Monday",
+        "time_slot_id": 2,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 3,
+        "course_code": "AITD03",
+        "faculty_id": "IARE11088",
+        "room_number": "1101",
+        "day_of_week": "Monday",
+        "time_slot_id": 3,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 4,
+        "course_code": "ACSD14",
+        "faculty_id": "IARE10996",
+        "room_number": "1101",
+        "day_of_week": "Monday",
+        "time_slot_id": 4,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 5,
+        "course_code": "AITD05",
+        "faculty_id": "IARE11088",
+        "room_number": "1115",
+        "day_of_week": "Monday",
+        "time_slot_id": 5,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 6,
+        "course_code": "AITD05",
+        "faculty_id": "IARE11088",
+        "room_number": "1115",
+        "day_of_week": "Monday",
+        "time_slot_id": 6,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 1,
+        "course_code": "ACSD13",
+        "faculty_id": "IARE10862",
+        "room_number": "1108",
+        "day_of_week": "Monday",
+        "time_slot_id": 1,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 2,
+        "course_code": "ACSD18",
+        "faculty_id": "IARE10836",
+        "room_number": "1108",
+        "day_of_week": "Monday",
+        "time_slot_id": 2,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 3,
+        "course_code": "ACSD14",
+        "faculty_id": "IARE10686",
+        "room_number": "1108",
+        "day_of_week": "Monday",
+        "time_slot_id": 3,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 4,
+        "course_code": "AITD03",
+        "faculty_id": "IARE10567",
+        "room_number": "1108",
+        "day_of_week": "Monday",
+        "time_slot_id": 4,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 5,
+        "course_code": "ACSD15",
+        "faculty_id": "IARE10750",
+        "room_number": "1108",
+        "day_of_week": "Monday",
+        "time_slot_id": 5,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 6,
+        "course_code": "AITD04",
+        "faculty_id": "IARE11123",
+        "room_number": "1108",
+        "day_of_week": "Tuesday",
+        "time_slot_id": 1,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 7,
+        "course_code": "ACSD15",
+        "faculty_id": "IARE10750",
+        "room_number": "1108",
+        "day_of_week": "Tuesday",
+        "time_slot_id": 2,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 8,
+        "course_code": "AITD03",
+        "faculty_id": "IARE10567",
+        "room_number": "1108",
+        "day_of_week": "Tuesday",
+        "time_slot_id": 3,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 9,
+        "course_code": "ACSD13",
+        "faculty_id": "IARE10862",
+        "room_number": "1108",
+        "day_of_week": "Tuesday",
+        "time_slot_id": 4,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 10,
+        "course_code": "ACSD14",
+        "faculty_id": "IARE10686",
+        "room_number": "1108",
+        "day_of_week": "Tuesday",
+        "time_slot_id": 5,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 11,
+        "course_code": "AITD04",
+        "faculty_id": "IARE11123",
+        "room_number": "1108",
+        "day_of_week": "Wednesday",
+        "time_slot_id": 1,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 12,
+        "course_code": "ACSD16",
+        "faculty_id": "IARE10862",
+        "room_number": "1111",
+        "day_of_week": "Wednesday",
+        "time_slot_id": 2,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 13,
+        "course_code": "ACSD16",
+        "faculty_id": "IARE10862",
+        "room_number": "1111",
+        "day_of_week": "Wednesday",
+        "time_slot_id": 3,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 14,
+        "course_code": "AITD03",
+        "faculty_id": "IARE10567",
+        "room_number": "1108",
+        "day_of_week": "Thursday",
+        "time_slot_id": 1,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 15,
+        "course_code": "AITD05",
+        "faculty_id": "IARE10567",
+        "room_number": "1115",
+        "day_of_week": "Thursday",
+        "time_slot_id": 2,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 16,
+        "course_code": "AITD05",
+        "faculty_id": "IARE10567",
+        "room_number": "1115",
+        "day_of_week": "Thursday",
+        "time_slot_id": 3,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 17,
+        "course_code": "ACSD15",
+        "faculty_id": "IARE10750",
+        "room_number": "1108",
+        "day_of_week": "Friday",
+        "time_slot_id": 4,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 18,
+        "course_code": "ACSD17",
+        "faculty_id": "IARE10686",
+        "room_number": "2006",
+        "day_of_week": "Friday",
+        "time_slot_id": 5,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 19,
+        "course_code": "ACSD17",
+        "faculty_id": "IARE10686",
+        "room_number": "2006",
+        "day_of_week": "Friday",
+        "time_slot_id": 6,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 20,
+        "course_code": "ACSD13",
+        "faculty_id": "IARE10862",
+        "room_number": "1108",
+        "day_of_week": "Saturday",
+        "time_slot_id": 4,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 21,
+        "course_code": "AITD04",
+        "faculty_id": "IARE11123",
+        "room_number": "1108",
+        "day_of_week": "Saturday",
+        "time_slot_id": 5,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 22,
+        "course_code": "ACSD14",
+        "faculty_id": "IARE10686",
+        "room_number": "1108",
+        "day_of_week": "Saturday",
+        "time_slot_id": 6,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 1,
+        "course_code": "ACSD18",
+        "faculty_id": "VVR",
+        "room_number": "1110",
+        "day_of_week": "Monday",
+        "time_slot_id": 1,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 2,
+        "course_code": "AITD04",
+        "faculty_id": "BKA",
+        "room_number": "1110",
+        "day_of_week": "Monday",
+        "time_slot_id": 2,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 3,
+        "course_code": "AITD03",
+        "faculty_id": "MSN",
+        "room_number": "1110",
+        "day_of_week": "Monday",
+        "time_slot_id": 3,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 4,
+        "course_code": "ACSD17",
+        "faculty_id": "BMD",
+        "room_number": "2006",
+        "day_of_week": "Monday",
+        "time_slot_id": 4,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 5,
+        "course_code": "ACSD17",
+        "faculty_id": "BMD",
+        "room_number": "2006",
+        "day_of_week": "Monday",
+        "time_slot_id": 5,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 6,
+        "course_code": "AITD03",
+        "faculty_id": "MSN",
+        "room_number": "1110",
+        "day_of_week": "Tuesday",
+        "time_slot_id": 1,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 7,
+        "course_code": "ACSD14",
+        "faculty_id": "BMD",
+        "room_number": "1110",
+        "day_of_week": "Tuesday",
+        "time_slot_id": 2,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 8,
+        "course_code": "ACSD13",
+        "faculty_id": "DRJ",
+        "room_number": "1110",
+        "day_of_week": "Tuesday",
+        "time_slot_id": 3,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 9,
+        "course_code": "ACSD16",
+        "faculty_id": "DRJ",
+        "room_number": "1111",
+        "day_of_week": "Tuesday",
+        "time_slot_id": 4,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 10,
+        "course_code": "ACSD16",
+        "faculty_id": "DRJ",
+        "room_number": "1111",
+        "day_of_week": "Tuesday",
+        "time_slot_id": 5,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 11,
+        "course_code": "LIBRARY",
+        "faculty_id": null,
+        "room_number": "2101",
+        "day_of_week": "Tuesday",
+        "time_slot_id": 6,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 12,
+        "course_code": "AHSD15",
+        "faculty_id": "PLN",
+        "room_number": "1206",
+        "day_of_week": "Tuesday",
+        "time_slot_id": 6,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 13,
+        "course_code": "AITD03",
+        "faculty_id": "MSN",
+        "room_number": "1110",
+        "day_of_week": "Wednesday",
+        "time_slot_id": 1,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 14,
+        "course_code": "ACSD15",
+        "faculty_id": "KJT",
+        "room_number": "1110",
+        "day_of_week": "Wednesday",
+        "time_slot_id": 2,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 15,
+        "course_code": "ACSD13",
+        "faculty_id": "DRJ",
+        "room_number": "1110",
+        "day_of_week": "Wednesday",
+        "time_slot_id": 3,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 16,
+        "course_code": "ACSD15",
+        "faculty_id": "KJT",
+        "room_number": "1110",
+        "day_of_week": "Thursday",
+        "time_slot_id": 1,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 17,
+        "course_code": "ACSD14",
+        "faculty_id": "BMD",
+        "room_number": "1110",
+        "day_of_week": "Thursday",
+        "time_slot_id": 2,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 18,
+        "course_code": "ACSD13",
+        "faculty_id": "DRJ",
+        "room_number": "1110",
+        "day_of_week": "Thursday",
+        "time_slot_id": 3,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 19,
+        "course_code": "AITD04",
+        "faculty_id": "BKA",
+        "room_number": "1110",
+        "day_of_week": "Friday",
+        "time_slot_id": 4,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 20,
+        "course_code": "AITD05",
+        "faculty_id": "MSN",
+        "room_number": "1115",
+        "day_of_week": "Friday",
+        "time_slot_id": 5,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 21,
+        "course_code": "AITD05",
+        "faculty_id": "MSN",
+        "room_number": "1115",
+        "day_of_week": "Friday",
+        "time_slot_id": 6,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 22,
+        "course_code": "ACSD15",
+        "faculty_id": "KJT",
+        "room_number": "1110",
+        "day_of_week": "Saturday",
+        "time_slot_id": 4,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 23,
+        "course_code": "ACSD14",
+        "faculty_id": "BMD",
+        "room_number": "1110",
+        "day_of_week": "Saturday",
+        "time_slot_id": 5,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 24,
+        "course_code": "AITD04",
+        "faculty_id": "BKA",
+        "room_number": "1110",
+        "day_of_week": "Saturday",
+        "time_slot_id": 6,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 1,
+        "course_code": "ACSD15",
+        "faculty_id": "IARE10188",
+        "room_number": "1206",
+        "day_of_week": "Monday",
+        "time_slot_id": 1,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 2,
+        "course_code": "ACSD13",
+        "faculty_id": "IARE10989",
+        "room_number": "1206",
+        "day_of_week": "Monday",
+        "time_slot_id": 2,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 3,
+        "course_code": "ACSD13",
+        "faculty_id": "IARE10989",
+        "room_number": "1206",
+        "day_of_week": "Monday",
+        "time_slot_id": 3,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 4,
+        "course_code": "AITD03",
+        "faculty_id": "IARE10794",
+        "room_number": "1206",
+        "day_of_week": "Monday",
+        "time_slot_id": 4,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 5,
+        "course_code": "AITD04",
+        "faculty_id": "IARE10895",
+        "room_number": "1206",
+        "day_of_week": "Monday",
+        "time_slot_id": 5,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 6,
+        "course_code": "ACSD14",
+        "faculty_id": "IARE10879",
+        "room_number": "1206",
+        "day_of_week": "Monday",
+        "time_slot_id": 6,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 1,
+        "course_code": "ACSD16",
+        "faculty_id": "IARE10579",
+        "room_number": "1111",
+        "day_of_week": "Monday",
+        "time_slot_id": 1,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 2,
+        "course_code": "ACSD14",
+        "faculty_id": "IARE10739",
+        "room_number": "1209",
+        "day_of_week": "Monday",
+        "time_slot_id": 4,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 3,
+        "course_code": "ACSD13",
+        "faculty_id": "IARE10579",
+        "room_number": "1209",
+        "day_of_week": "Monday",
+        "time_slot_id": 5,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 4,
+        "course_code": "ACSD15",
+        "faculty_id": "IARE10794",
+        "room_number": "1209",
+        "day_of_week": "Monday",
+        "time_slot_id": 6,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 1,
+        "course_code": "AITD03",
+        "faculty_id": "IARE10324",
+        "room_number": "1402",
+        "day_of_week": "Monday",
+        "time_slot_id": 1,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 2,
+        "course_code": "ACSD14",
+        "faculty_id": "IARE10996",
+        "room_number": "1402",
+        "day_of_week": "Monday",
+        "time_slot_id": 2,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 3,
+        "course_code": "ACSD13",
+        "faculty_id": "IARE10991",
+        "room_number": "1402",
+        "day_of_week": "Monday",
+        "time_slot_id": 3,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 4,
+        "course_code": "ACSD16",
+        "faculty_id": "IARE10991",
+        "room_number": "1111",
+        "day_of_week": "Monday",
+        "time_slot_id": 4,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 5,
+        "course_code": "ACSD16",
+        "faculty_id": "IARE10991",
+        "room_number": "1111",
+        "day_of_week": "Monday",
+        "time_slot_id": 5,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      },
+      {
+        "schedule_id": 6,
+        "course_code": "ACSD16",
+        "faculty_id": "IARE10991",
+        "room_number": "1111",
+        "day_of_week": "Monday",
+        "time_slot_id": 6,
+        "semester": "IV",
+        "academic_year": "2024-25"
+      }
+    ]
+  }

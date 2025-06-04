@@ -13,6 +13,8 @@ import DepartmentSelector from "./components/user/DepartmentSelector";
 import UserDashboard from "./components/user/UserDashboard";
 import AdminDashboard from "./components/admin/AdminDashboard";
 import NotFound from "./pages/NotFound";
+import { useEffect } from 'react';
+import { dataInitService } from './services/dataInitService';
 
 const queryClient = new QueryClient();
 
@@ -34,8 +36,25 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   return <Layout>{children}</Layout>;
 };
 
+// Remove the invalid hook call that was here
+
+// Keep only the effect inside the AppContent component
 const AppContent = () => {
   const { user, isLoading } = useAuth();
+
+  // Add this effect to initialize data on app startup
+  useEffect(() => {
+    const initData = async () => {
+      try {
+        await dataInitService.initializeAppData();
+        console.log("Application data initialized");
+      } catch (error) {
+        console.error("Failed to initialize application data:", error);
+      }
+    };
+
+    initData();
+  }, []);
 
   if (isLoading) {
     return (

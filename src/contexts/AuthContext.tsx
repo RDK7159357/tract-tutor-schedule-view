@@ -1,3 +1,4 @@
+import { dataInitService } from '../services/dataInitService';
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { User } from '../types/database';
@@ -33,6 +34,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setIsLoading(false);
   }, []);
 
+  // Add this import at the top
+
   const login = async (username: string, password: string, role: 'user' | 'admin'): Promise<boolean> => {
     setIsLoading(true);
     
@@ -50,6 +53,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       
       setUser(userData);
       localStorage.setItem('tracttutor_user', JSON.stringify(userData));
+      
+      // Initialize application data after successful login
+      try {
+        await dataInitService.initializeAppData();
+        console.log("Application data initialized after login");
+      } catch (dataError) {
+        console.error("Failed to initialize application data after login:", dataError);
+        // Continue with login even if data initialization fails
+      }
+      
       return true;
     } catch (error) {
       console.error('Login error:', error);

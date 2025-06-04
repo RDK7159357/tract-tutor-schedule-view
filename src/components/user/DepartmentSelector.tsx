@@ -1,25 +1,41 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { ChevronDown, Building } from 'lucide-react';
-
-const departments = [
-  'Computer Science',
-  'Mathematics',
-  'Physics',
-  'Chemistry',
-  'Biology',
-  'English',
-  'History',
-  'Psychology',
-  'Economics',
-  'Business Administration'
-];
+import { localDataService } from '../../services/localDataService';
 
 const DepartmentSelector: React.FC = () => {
   const { setUserDepartment } = useAuth();
   const [selectedDepartment, setSelectedDepartment] = useState('');
   const [isOpen, setIsOpen] = useState(false);
+  const [departments, setDepartments] = useState<string[]>([]);
+
+  // Load departments from data.json
+  useEffect(() => {
+    const loadDepartments = async () => {
+      try {
+        // Get faculty data from localDataService
+        const faculty = localDataService.getFaculty();
+        
+        // Extract unique departments
+        const uniqueDepartments = [...new Set(faculty.map(f => f.department))];
+        setDepartments(uniqueDepartments);
+      } catch (error) {
+        console.error('Error loading departments:', error);
+        // Fallback to default departments if loading fails
+        setDepartments([
+          'Computer Science and Engineering',
+          'Information Technology',
+          'Electronics and Communication Engineering',
+          'Electrical and Electronics Engineering',
+          'Mechanical Engineering',
+          'Civil Engineering'
+        ]);
+      }
+    };
+    
+    loadDepartments();
+  }, []);
 
   const handleDepartmentSelect = (department: string) => {
     setSelectedDepartment(department);

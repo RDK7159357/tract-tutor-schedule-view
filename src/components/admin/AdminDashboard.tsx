@@ -1,9 +1,103 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Users, Calendar, MapPin, Clock, Plus, Edit, Trash2 } from 'lucide-react';
+import { facultyService } from '../../services/facultyService';
+import { courseService } from '../../services/courseService';
+import { roomService } from '../../services/roomService';
+import { timeSlotService } from '../../services/timeSlotService';
+import { scheduleService } from '../../services/scheduleService';
+import { Faculty, Course, Room, TimeSlot, CourseSchedule } from '../../types/database';
 
 const AdminDashboard: React.FC = () => {
   const [activeTab, setActiveTab] = useState('overview');
+  
+  // Move all these hooks inside the component
+  const [faculties, setFaculties] = useState<Faculty[]>([]);
+  const [courses, setCourses] = useState<Course[]>([]);
+  const [rooms, setRooms] = useState<Room[]>([]);
+  const [timeSlots, setTimeSlots] = useState<TimeSlot[]>([]);
+  const [schedules, setSchedules] = useState<CourseSchedule[]>([]);
+  
+  // New state for form inputs
+  const [newRoom, setNewRoom] = useState<Partial<Room>>({});
+  const [newTimeSlot, setNewTimeSlot] = useState<Partial<TimeSlot>>({});
+  const [newSchedule, setNewSchedule] = useState<Partial<CourseSchedule>>({});
+  
+  // Fetch data on component mount
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [facultyData, courseData, roomData, timeSlotData, scheduleData] = await Promise.all([
+          facultyService.getAllFaculty(),
+          courseService.getAllCourses(),
+          roomService.getAllRooms(),
+          timeSlotService.getAllTimeSlots(),
+          scheduleService.getAllSchedules()
+        ]);
+        
+        setFaculties(facultyData);
+        setCourses(courseData);
+        setRooms(roomData);
+        setTimeSlots(timeSlotData);
+        setSchedules(scheduleData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+    
+    fetchData();
+  }, []);
+
+  // Room handlers
+  const handleRoomChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setNewRoom(prev => ({ ...prev, [name]: value }));
+  };
+  
+  const handleRoomSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const savedRoom = await roomService.createRoom(newRoom as Room);
+      setRooms(prev => [...prev, savedRoom]);
+      setNewRoom({});
+    } catch (error) {
+      console.error('Error saving room:', error);
+    }
+  };
+  
+  // Time slot handlers
+  const handleTimeSlotChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setNewTimeSlot(prev => ({ ...prev, [name]: value }));
+  };
+  
+  const handleTimeSlotSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const savedTimeSlot = await timeSlotService.createTimeSlot(newTimeSlot as TimeSlot);
+      setTimeSlots(prev => [...prev, savedTimeSlot]);
+      setNewTimeSlot({});
+    } catch (error) {
+      console.error('Error saving time slot:', error);
+    }
+  };
+  
+  // Schedule handlers
+  const handleScheduleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setNewSchedule(prev => ({ ...prev, [name]: value }));
+  };
+  
+  const handleScheduleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const savedSchedule = await scheduleService.createSchedule(newSchedule as Omit<CourseSchedule, 'schedule_id'>);
+      setSchedules(prev => [...prev, savedSchedule]);
+      setNewSchedule({});
+    } catch (error) {
+      console.error('Error saving schedule:', error);
+    }
+  };
 
   const tabs = [
     { id: 'overview', label: 'Overview', icon: Calendar },
