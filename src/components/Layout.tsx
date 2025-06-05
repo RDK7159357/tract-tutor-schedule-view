@@ -27,7 +27,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   <span className="text-lg font-bold text-white">TT</span>
                 </div>
                 <h1 className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-gray-100 dark:to-gray-300 bg-clip-text text-transparent transition-colors duration-300">
-                  TractTutor
+                  TrackTutor
                 </h1>
               </div>
               <div className="ml-6 flex items-center">

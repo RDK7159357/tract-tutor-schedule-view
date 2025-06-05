@@ -54,7 +54,7 @@ const LoginForm: React.FC = () => {
             <span className="text-2xl font-bold text-white">TT</span>
           </div>
           <h1 className="text-4xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-gray-100 dark:to-gray-300 bg-clip-text text-transparent mb-2 transition-colors duration-300">
-            TractTutor
+            TrackTutor
           </h1>
           <p className="text-gray-600 dark:text-gray-300 font-medium transition-colors duration-300">Faculty Schedule Management System</p>
         </div>

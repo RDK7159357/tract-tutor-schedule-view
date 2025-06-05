@@ -147,5 +147,22 @@ export const scheduleService = {
         throw localError;
       }
     }
+  },
+
+  async createSchedule(schedule: Omit<CourseSchedule, 'schedule_id'>): Promise<CourseSchedule> {
+    try {
+      console.log('Creating new schedule via API...');
+      const response = await apiClient.post('/schedules', schedule);
+      
+      // Update cache with new schedule
+      const cachedSchedules = cacheService.getItem<CourseSchedule[]>(CACHE_KEYS.SCHEDULES) || [];
+      cachedSchedules.push(response.data);
+      cacheService.setItem(CACHE_KEYS.SCHEDULES, cachedSchedules);
+      
+      return response.data;
+    } catch (error) {
+      console.error('Error creating schedule:', error);
+      throw error;
+    }
   }
 };
