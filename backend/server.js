@@ -83,11 +83,11 @@ app.get('/api/test', (req, res) => {
   
   app.put('/api/faculty/:id', async (req, res) => {
     try {
-      const { id } = req.params;
-      const { name, department, email, contact_number } = req.body;
+      const { id } = req.params; // old faculty_id
+      const { faculty_id, name, department, email, contact_number } = req.body; // new faculty_id
       const result = await pool.query(
-        'UPDATE faculty SET name = $1, department = $2, email = $3, contact_number = $4 WHERE faculty_id = $5 RETURNING *',
-        [name, department, email, contact_number, id]
+        'UPDATE faculty SET faculty_id = $1, name = $2, department = $3, email = $4, contact_number = $5 WHERE faculty_id = $6 RETURNING *',
+        [faculty_id, name, department, email, contact_number, id]
       );
       if (result.rows.length === 0) {
         return res.status(404).json({ error: 'Faculty not found' });
@@ -355,7 +355,7 @@ app.get('/api/test', (req, res) => {
           cs.semester,
           cs.academic_year
         FROM courseschedule cs
-        LEFT JOIN faculty f ON cs.faculty_id = f.faculty_id
+        INNER JOIN faculty f ON cs.faculty_id = f.faculty_id
         LEFT JOIN courses c ON cs.course_code = c.course_code
         LEFT JOIN rooms r ON cs.room_number = r.room_number
         LEFT JOIN timeslots ts ON cs.time_slot_id = ts.slot_id

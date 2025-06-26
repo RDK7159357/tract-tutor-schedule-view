@@ -164,5 +164,41 @@ export const scheduleService = {
       console.error('Error creating schedule:', error);
       throw error;
     }
+  },
+
+  async updateSchedule(schedule: CourseSchedule): Promise<CourseSchedule> {
+    try {
+      const { schedule_id, course_code, faculty_id, room_number, day_of_week, time_slot_id, semester, academic_year } = schedule;
+      const response = await apiClient.put(`/schedules/${schedule_id}`, {
+        course_code,
+        faculty_id,
+        room_number,
+        day_of_week,
+        time_slot_id,
+        semester,
+        academic_year
+      });
+      // Update cache
+      const cachedSchedules = cacheService.getItem<CourseSchedule[]>(CACHE_KEYS.SCHEDULES) || [];
+      const updatedSchedules = cachedSchedules.map(s => s.schedule_id === schedule_id ? response.data : s);
+      cacheService.setItem(CACHE_KEYS.SCHEDULES, updatedSchedules);
+      return response.data;
+    } catch (error) {
+      console.error('Error updating schedule:', error);
+      throw error;
+    }
+  },
+
+  async deleteSchedule(schedule_id: string): Promise<void> {
+    try {
+      await apiClient.delete(`/schedules/${schedule_id}`);
+      // Update cache
+      const cachedSchedules = cacheService.getItem<CourseSchedule[]>(CACHE_KEYS.SCHEDULES) || [];
+      const updatedSchedules = cachedSchedules.filter(s => s.schedule_id !== schedule_id);
+      cacheService.setItem(CACHE_KEYS.SCHEDULES, updatedSchedules);
+    } catch (error) {
+      console.error('Error deleting schedule:', error);
+      throw error;
+    }
   }
 };

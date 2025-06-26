@@ -257,15 +257,68 @@ The project includes a Jenkinsfile that defines a CI/CD pipeline with the follow
 - Deployed to AWS EC2 instance
 - Docker image stored in AWS ECR
 
+## Recent Enhancements
+
+### CRUD Functionality
+- Full Create, Read, Update, Delete (CRUD) operations for all entities: Faculty, Courses, Rooms, Time Slots, and Schedules.
+- Inline editing and deletion for all entities in the Admin Dashboard.
+- All changes are immediately reflected in both the backend (PostgreSQL) and the frontend UI/cache.
+
+### Data Handling & Caching
+- All data is now fetched from the backend API; local/mock data has been removed.
+- Robust caching mechanism: API data is cached on the frontend and used as a fallback if the backend is unavailable.
+- Error fallback and user-friendly error messages for all API operations.
+
+### UI/UX Improvements
+- All input fields and dropdowns support both light and dark mode (`dark:text-black` for consistent appearance).
+- User-friendly forms with placeholders and validation.
+- Inline editing and deletion for all entities, with immediate UI updates.
+- (Optional) Confirmation dialogs and notifications for destructive actions (can be further enhanced).
+
+### Backend Enhancements
+- Faculty endpoints allow updating the `faculty_id` (primary key) via the API.
+- Full CRUD endpoints for schedules, rooms, timeslots, and courses.
+- All endpoints return appropriate error messages and status codes.
+
+### Data Verification
+- To verify if a new faculty (or any entity) is inserted:
+  - Use the API: `GET /api/faculty` (or the relevant endpoint) to fetch all records and check for your entry.
+  - Or, connect to the PostgreSQL database and run:
+    ```sql
+    SELECT * FROM faculty WHERE faculty_id = 'YOUR_ID';
+    ```
+  - The same applies for courses, rooms, timeslots, and schedules.
+
+### API-First Approach
+- All data flows through the backend API, ensuring a single source of truth.
+- The frontend never uses stale or local data; all changes are persisted to the database.
+
+### Component & Service Structure
+- All CRUD logic is handled via service files (`facultyService.ts`, `courseService.ts`, etc.)
+- Caching is managed by `cacheService.ts`.
+- UI is split into user and admin dashboards, with role-based access and department filtering.
+
+### Troubleshooting
+- If you encounter a NOT NULL constraint error (e.g., for `faculty_id`), ensure the form is filled correctly and the field is not empty.
+- All API errors are logged in the browser console and displayed in the UI where appropriate.
+
 ## Future Enhancements
 
-1. Implement real user authentication with JWT
-2. Add conflict detection for schedule creation
-3. Implement schedule export functionality
-4. Add student view for course schedules
-5. Implement notifications for schedule changes
+1. **Real-Time Faculty Tracking**
+   - Implement real-time location/status tracking for faculty members (e.g., using WebSockets or polling).
+   - Display live faculty availability and location on the dashboard for admins and users.
+
+2. **Authentication & Authorization**
+   - Implement robust user authentication using JWT or OAuth.
+   - Add role-based access control for different user types (admin, faculty, student).
+   - Secure all API endpoints and UI routes.
+
+3. **Additional Features**
+   - Conflict detection for schedule creation.
+   - Schedule export functionality (PDF, CSV, etc.).
+   - Student view for course schedules.
+   - Notifications for schedule changes.
 
 ---
 
 This documentation provides a comprehensive overview of the Track Tutor application. For specific implementation details, refer to the source code in the repository.
-        

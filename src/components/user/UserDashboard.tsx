@@ -6,51 +6,7 @@ import { Search, Calendar, Clock, MapPin, User } from 'lucide-react';
 import { scheduleService } from '../../services/scheduleService';
 import { dataInitService } from '../../services/dataInitService';
 
-// Mock data - replace with real API calls
-// const mockScheduleData: ScheduleView[] = [
-//   {
-//     schedule_id: '1',
-//     faculty_name: 'Dr. John Smith',
-//     faculty_id: 'FAC001',
-//     department: 'Computer Science',
-//     course_name: 'Data Structures',
-//     room_number: 'CS101',
-//     building: 'Computer Science Building',
-//     day_of_week: 'Monday',
-//     start_time: '09:00',
-//     end_time: '10:30',
-//     semester: 'Fall',
-//     academic_year: '2024'
-//   },
-//   {
-//     schedule_id: '2',
-//     faculty_name: 'Prof. Sarah Johnson',
-//     faculty_id: 'FAC002',
-//     department: 'Computer Science',
-//     course_name: 'Database Systems',
-//     room_number: 'CS102',
-//     building: 'Computer Science Building',
-//     day_of_week: 'Tuesday',
-//     start_time: '11:00',
-//     end_time: '12:30',
-//     semester: 'Fall',
-//     academic_year: '2024'
-//   },
-//   {
-//     schedule_id: '3',
-//     faculty_name: 'Dr. Michael Brown',
-//     faculty_id: 'FAC003',
-//     department: 'Computer Science',
-//     course_name: 'Software Engineering',
-//     room_number: 'CS103',
-//     building: 'Computer Science Building',
-//     day_of_week: 'Wednesday',
-//     start_time: '14:00',
-//     end_time: '15:30',
-//     semester: 'Fall',
-//     academic_year: '2024'
-//   }
-// ];
+
 
 const UserDashboard: React.FC = () => {
   const { user } = useAuth();
