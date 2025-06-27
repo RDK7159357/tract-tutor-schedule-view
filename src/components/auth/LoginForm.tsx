@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { User, Settings, LogIn, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const GoogleIcon = () => (
   <svg className="h-5 w-5" viewBox="0 0 24 24">
@@ -13,32 +13,144 @@ const GoogleIcon = () => (
 );
 
 const LoginForm: React.FC = () => {
+  const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState<'user' | 'admin'>('user');
   const [error, setError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+  const [isEmailVerificationError, setIsEmailVerificationError] = useState(false);
+  const [resendingEmail, setResendingEmail] = useState(false);
   const { login, isLoading } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
-    
-    if (!username || !password) {
+    setSuccessMessage('');
+    setIsEmailVerificationError(false);
+
+    if (role === 'admin') {
+      if (username !== 'Admin' || password !== 'IARE@TrackTutor') {
+        setError('Incorrect credentials entered. Please check your username and password.');
+        return;
+      }
+      // Use login() to set context and localStorage, then redirect
+      await login(username, password, 'admin');
+      navigate('/admin');
+      return;
+    }
+
+    if (!email || !password) {
       setError('Please fill in all fields');
       return;
     }
 
-    const success = await login(username, password, role);
-    if (!success) {
-      setError('Invalid credentials');
+    try {
+      // Import Supabase client to check for specific errors
+      const { supabase } = await import('../../services/supabaseClient');
+      
+      // First try direct login with Supabase to get detailed error
+      const { error: supabaseError } = await supabase.auth.signInWithPassword({
+        email,
+        password
+      });
+      
+      if (supabaseError) {
+        // Check for email verification error
+        if (supabaseError.message.toLowerCase().includes('email not confirmed')) {
+          setError('Please verify your email address before logging in. Check your inbox for a confirmation email.');
+          setIsEmailVerificationError(true);
+          return;
+        }
+      }
+      
+      // If no specific error caught, proceed with normal login flow
+      const success = await login(email, password, role);
+      if (!success) {
+        setError('Incorrect credentials entered. Please check your email and password.');
+      } else {
+        navigate('/dashboard');
+      }
+    } catch (err) {
+      console.error('Login error:', err);
+      setError('Login failed. Please try again.');
     }
   };
 
-  const handleGoogleLogin = () => {
-    // Mock Google login - in real app, integrate with Google OAuth
-    console.log('Google login clicked');
-    setError('Google authentication would be implemented here');
+  const handleGoogleLogin = async () => {
+    setError('');
+    setSuccessMessage('');
+    setIsEmailVerificationError(false);
+    try {
+      const { error } = await import('../../services/supabaseClient').then(({ supabase }) =>
+        supabase.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: window.location.origin + '/dashboard' } })
+      );
+      if (error) {
+        setError('Google authentication failed. Please try again.');
+      }
+      // The user will be redirected to Google and back
+    } catch (err) {
+      setError('Google authentication failed. Please try again.');
+    }
   };
+  
+  const handleResendVerificationEmail = async () => {
+    if (!email) {
+      setError('Please enter your email address to resend the verification email.');
+      return;
+    }
+    
+    setResendingEmail(true);
+    setError('');
+    setSuccessMessage('');
+    
+    try {
+      const { supabase } = await import('../../services/supabaseClient');
+      const { error } = await supabase.auth.resend({
+        type: 'signup',
+        email: email,
+      });
+      
+      if (error) {
+        setError(`Failed to resend verification email: ${error.message}`);
+      } else {
+        setSuccessMessage('Verification email has been resent. Please check your inbox.');
+        setIsEmailVerificationError(false);
+      }
+    } catch (err) {
+      console.error('Error resending verification email:', err);
+      setError('Failed to resend verification email. Please try again later.');
+    } finally {
+      setResendingEmail(false);
+    }
+  };
+
+  // Show a generic error if a 400 error is detected in the URL (Google OAuth failure)
+  useEffect(() => {
+    if (window.location.search.includes('error')) {
+      setError('Google authentication failed. Please try again.');
+    }
+  }, []);
+
+  // Show error if Supabase email authentication fails (e.g., error param in URL)
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const errorCode = params.get('error_code');
+    const errorDescription = params.get('error_description');
+    
+    if (errorCode === 'invalid_login') {
+      setError('Incorrect credentials entered. Please check your email and password.');
+    } else if (errorCode === 'email_not_confirmed') {
+      setError('Please verify your email address before logging in. Check your inbox for a confirmation email.');
+      setIsEmailVerificationError(true);
+    } else if (errorDescription?.toLowerCase().includes('email not confirmed')) {
+      setError('Please verify your email address before logging in. Check your inbox for a confirmation email.');
+      setIsEmailVerificationError(true);
+    } else if (errorDescription) {
+      setError(errorDescription);
+    }
+  }, []);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative overflow-hidden transition-colors duration-300">
@@ -66,9 +178,28 @@ const LoginForm: React.FC = () => {
           </div>
 
           {error && (
-            <div className="mb-4 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl text-red-600 dark:text-red-400 text-sm flex items-center transition-colors duration-300">
-              <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
-              {error}
+            <div className="mb-4 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl text-red-600 dark:text-red-400 text-sm flex flex-col transition-colors duration-300">
+              <div className="flex items-center">
+                <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
+                {error}
+              </div>
+              
+              {isEmailVerificationError && (
+                <button
+                  onClick={handleResendVerificationEmail}
+                  disabled={resendingEmail}
+                  className="mt-2 self-end text-xs font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors"
+                >
+                  {resendingEmail ? 'Sending...' : 'Resend verification email'}
+                </button>
+              )}
+            </div>
+          )}
+          
+          {successMessage && (
+            <div className="mb-4 p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-xl text-green-600 dark:text-green-400 text-sm flex items-center transition-colors duration-300">
+              <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+              {successMessage}
             </div>
           )}
 
@@ -92,21 +223,41 @@ const LoginForm: React.FC = () => {
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-4">
-              <div>
-                <label htmlFor="username" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-300">
-                  Username
-                </label>
-                <input
-                  id="username"
-                  type="text"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-700 focus:bg-white dark:focus:bg-gray-600 text-gray-900 dark:text-gray-100"
-                  placeholder="Enter your username"
-                  disabled={isLoading}
-                />
-              </div>
-
+              {role === 'user' ? (
+                <>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-300">
+                      Email
+                    </label>
+                    <input
+                      id="email"
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="w-full px-4 py-3 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-700 focus:bg-white dark:focus:bg-gray-600 text-gray-900 dark:text-gray-100"
+                      placeholder="Enter your email"
+                      disabled={isLoading}
+                    />
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div>
+                    <label htmlFor="username" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-300">
+                      Username
+                    </label>
+                    <input
+                      id="username"
+                      type="text"
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
+                      className="w-full px-4 py-3 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-700 focus:bg-white dark:focus:bg-gray-600 text-gray-900 dark:text-gray-100"
+                      placeholder="Enter your username"
+                      disabled={isLoading}
+                    />
+                  </div>
+                </>
+              )}
               <div>
                 <label htmlFor="password" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-300">
                   Password
@@ -184,12 +335,7 @@ const LoginForm: React.FC = () => {
             </p>
           </div>
 
-          <div className="mt-4 text-center">
-            <div className="inline-flex items-center px-3 py-1 rounded-full text-xs bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400 border border-green-200 dark:border-green-800 transition-colors duration-300">
-              <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
-              Demo: Any username/password works
-            </div>
-          </div>
+
         </div>
       </div>
     </div>

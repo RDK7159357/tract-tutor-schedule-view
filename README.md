@@ -40,6 +40,7 @@ The project follows a modern client-server architecture:
 - **Lucide React**: Icon library
 - **React Hook Form**: Form handling
 - **Zod**: Schema validation
+- **Supabase**: Authentication with email verification and OAuth
 
 ### Backend
 - **Node.js**: JavaScript runtime
@@ -159,7 +160,10 @@ The project includes a Jenkinsfile that defines a CI/CD pipeline with the follow
 ## Application Features
 
 ### Authentication
+- User registration with email verification process
 - User login with role-based access (admin/user)
+- Google OAuth integration for simplified sign-in
+- Email verification error handling with resend capability
 - Department selection for users
 - Session persistence using local storage
 
@@ -192,8 +196,8 @@ The project includes a Jenkinsfile that defines a CI/CD pipeline with the follow
 - **ThemeContext**: Theme (dark/light) management
 
 ### User Interface
-- **LoginForm**: User authentication
-- **SignUpForm**: New user registration
+- **LoginForm**: User authentication with email verification checks and resend functionality
+- **SignUpForm**: New user registration with email verification process and success notifications
 - **DepartmentSelector**: Department selection for users
 - **UserDashboard**: Schedule viewing interface for regular users
 - **AdminDashboard**: Comprehensive management interface for administrators
@@ -259,6 +263,14 @@ The project includes a Jenkinsfile that defines a CI/CD pipeline with the follow
 
 ## Recent Enhancements
 
+### Authentication Improvements
+- Enhanced email verification workflow for new user registration
+- Clear success message after signup instructing users to check their email for verification
+- Improved error handling in login form to detect unverified email accounts
+- Added "Resend verification email" functionality for users who haven't verified their accounts
+- User-friendly error messages with actionable instructions for authentication issues
+- Visual distinction between error messages (red) and success messages (green) for better UX
+
 ### CRUD Functionality
 - Full Create, Read, Update, Delete (CRUD) operations for all entities: Faculty, Courses, Rooms, Time Slots, and Schedules.
 - Inline editing and deletion for all entities in the Admin Dashboard.
@@ -308,10 +320,13 @@ The project includes a Jenkinsfile that defines a CI/CD pipeline with the follow
    - Implement real-time location/status tracking for faculty members (e.g., using WebSockets or polling).
    - Display live faculty availability and location on the dashboard for admins and users.
 
-2. **Authentication & Authorization**
-   - Implement robust user authentication using JWT or OAuth.
-   - Add role-based access control for different user types (admin, faculty, student).
-   - Secure all API endpoints and UI routes.
+2. **Authentication & Authorization Enhancements**
+   - Implement password reset functionality for users who forget their passwords
+   - Add multi-factor authentication (MFA) for additional security
+   - Enhance role-based access control for different user types (admin, faculty, student)
+   - Implement session timeout and automatic logout for inactive users
+   - Add social login options beyond Google (e.g., Microsoft, Apple)
+   - Secure all API endpoints with token-based authentication
 
 3. **Additional Features**
    - Conflict detection for schedule creation.

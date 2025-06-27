@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -68,18 +67,26 @@ const AppContent = () => {
     <Routes>
       <Route 
         path="/login" 
-        element={user ? <Navigate to="/" replace /> : <LoginForm />} 
+        element={user ? <Navigate to={user.role === 'admin' ? "/admin" : "/dashboard"} replace /> : <LoginForm />} 
       />
       <Route 
         path="/signup" 
-        element={user ? <Navigate to="/" replace /> : <SignUpForm />} 
+        element={user ? <Navigate to={user.role === 'admin' ? "/admin" : "/dashboard"} replace /> : <SignUpForm />} 
       />
       <Route
-        path="/"
+        path="/admin"
+        element={
+          <ProtectedRoute>
+            {user?.role === 'admin' ? <AdminDashboard /> : <Navigate to="/dashboard" replace />}
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/dashboard"
         element={
           <ProtectedRoute>
             {user?.role === 'admin' ? (
-              <AdminDashboard />
+              <Navigate to="/admin" replace />
             ) : user?.role === 'user' && !user?.department ? (
               <DepartmentSelector />
             ) : (
@@ -87,6 +94,10 @@ const AppContent = () => {
             )}
           </ProtectedRoute>
         }
+      />
+      <Route
+        path="/"
+        element={<Navigate to="/dashboard" replace />}
       />
       <Route path="*" element={<NotFound />} />
     </Routes>

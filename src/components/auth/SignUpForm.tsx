@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
-import { User, Settings, UserPlus, ArrowRight, Mail, Phone } from 'lucide-react';
+import { UserPlus, ArrowRight, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const GoogleIcon = () => (
@@ -14,14 +14,11 @@ const GoogleIcon = () => (
 
 const SignUpForm: React.FC = () => {
   const [formData, setFormData] = useState({
-    username: '',
     email: '',
     password: '',
-    confirmPassword: '',
-    phone: '',
-    role: 'user' as 'user' | 'admin'
   });
   const [error, setError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const { login } = useAuth();
 
@@ -35,17 +32,12 @@ const SignUpForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
+    setSuccessMessage('');
     setIsLoading(true);
     
     // Basic validation
-    if (!formData.username || !formData.email || !formData.password || !formData.confirmPassword) {
+    if (!formData.email || !formData.password) {
       setError('Please fill in all required fields');
-      setIsLoading(false);
-      return;
-    }
-
-    if (formData.password !== formData.confirmPassword) {
-      setError('Passwords do not match');
       setIsLoading(false);
       return;
     }
@@ -57,26 +49,93 @@ const SignUpForm: React.FC = () => {
     }
 
     try {
-      // Simulate API delay
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // Import Supabase client
+      const { supabase } = await import('../../services/supabaseClient');
       
-      // In a real app, you'd call your signup API here
-      // For demo purposes, we'll just automatically log them in
-      const success = await login(formData.username, formData.password, formData.role);
-      if (!success) {
-        setError('Registration failed. Please try again.');
+      // Check if Supabase client is properly initialized
+      if (!supabase || !supabase.auth) {
+        console.error('Supabase client not properly initialized');
+        setError('Authentication service unavailable. Please try again later.');
+        setIsLoading(false);
+        return;
       }
-    } catch (error) {
-      setError('Registration failed. Please try again.');
+      
+      // Supabase signup
+      const { data, error } = await supabase.auth.signUp({
+        email: formData.email,
+        password: formData.password,
+      });
+      
+      console.log('Sign up response:', { data, error });
+      
+      if (error) {
+        setError(error.message || 'Registration failed. Please try again.');
+        setIsLoading(false);
+        return;
+      }
+      
+      if (!data.user) {
+        setError('Registration failed. Please try again.');
+        setIsLoading(false);
+        return;
+      }
+      
+      // Show email verification message instead of auto-login
+      // We'll display a success message to check email
+      setIsLoading(false);
+      // Reset the form
+      setFormData({
+        email: '',
+        password: ''
+      });
+      // Set a success message instead of an error
+      setSuccessMessage('Registration successful! Please check your email to verify your account before logging in.');
+      // Don't attempt auto-login as the email needs verification first
+    } catch (error: any) {
+      console.error('Sign up error:', error);
+      setError(error?.message || 'Registration failed. Please try again.');
     } finally {
       setIsLoading(false);
     }
   };
 
-  const handleGoogleSignUp = () => {
-    // Mock Google sign up - in real app, integrate with Google OAuth
-    console.log('Google sign up clicked');
-    setError('Google authentication would be implemented here');
+  const handleGoogleSignUp = async () => {
+    setError('');
+    setSuccessMessage('');
+    setIsLoading(true);
+    try {
+      // Import Supabase client
+      const { supabase } = await import('../../services/supabaseClient');
+      
+      // Check if Supabase client is properly initialized
+      if (!supabase || !supabase.auth) {
+        console.error('Supabase client not properly initialized');
+        setError('Authentication service unavailable. Please try again later.');
+        setIsLoading(false);
+        return;
+      }
+      
+      console.log('Attempting Google sign in with OAuth');
+      
+      const { data, error } = await supabase.auth.signInWithOAuth({ 
+        provider: 'google', 
+        options: { 
+          redirectTo: window.location.origin + '/dashboard' 
+        } 
+      });
+      
+      console.log('Google OAuth response:', { data, error });
+      
+      if (error) {
+        setError(error.message || 'Google authentication failed. Please try again.');
+        setIsLoading(false);
+      }
+      // The user will be redirected to Google and back
+    } catch (err: any) {
+      console.error('Google sign in error:', err);
+      setError(err?.message || 'Google authentication failed. Please try again.');
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -110,6 +169,13 @@ const SignUpForm: React.FC = () => {
               {error}
             </div>
           )}
+          
+          {successMessage && (
+            <div className="mb-4 p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-xl text-green-600 dark:text-green-400 text-sm flex items-center transition-colors duration-300">
+              <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+              {successMessage}
+            </div>
+          )}
 
           <button
             onClick={handleGoogleSignUp}
@@ -132,22 +198,6 @@ const SignUpForm: React.FC = () => {
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="grid grid-cols-1 gap-4">
               <div>
-                <label htmlFor="username" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-300">
-                  Username *
-                </label>
-                <input
-                  id="username"
-                  name="username"
-                  type="text"
-                  value={formData.username}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-700 focus:bg-white dark:focus:bg-gray-600 text-gray-900 dark:text-gray-100"
-                  placeholder="Choose a username"
-                  disabled={isLoading}
-                />
-              </div>
-
-              <div>
                 <label htmlFor="email" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-300">
                   Email Address *
                 </label>
@@ -167,25 +217,6 @@ const SignUpForm: React.FC = () => {
               </div>
 
               <div>
-                <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-300">
-                  Phone Number
-                </label>
-                <div className="relative">
-                  <input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 pl-10 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-700 focus:bg-white dark:focus:bg-gray-600 text-gray-900 dark:text-gray-100"
-                    placeholder="(555) 123-4567"
-                    disabled={isLoading}
-                  />
-                  <Phone className="h-5 w-5 text-gray-400 absolute left-3 top-3.5" />
-                </div>
-              </div>
-
-              <div>
                 <label htmlFor="password" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-300">
                   Password *
                 </label>
@@ -199,54 +230,6 @@ const SignUpForm: React.FC = () => {
                   placeholder="Create a secure password"
                   disabled={isLoading}
                 />
-              </div>
-
-              <div>
-                <label htmlFor="confirmPassword" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-300">
-                  Confirm Password *
-                </label>
-                <input
-                  id="confirmPassword"
-                  name="confirmPassword"
-                  type="password"
-                  value={formData.confirmPassword}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-700 focus:bg-white dark:focus:bg-gray-600 text-gray-900 dark:text-gray-100"
-                  placeholder="Confirm your password"
-                  disabled={isLoading}
-                />
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3 transition-colors duration-300">Account Type</label>
-              <div className="grid grid-cols-2 gap-3">
-                <button
-                  type="button"
-                  onClick={() => setFormData(prev => ({ ...prev, role: 'user' }))}
-                  className={`flex items-center justify-center space-x-2 p-4 rounded-xl border-2 transition-all duration-200 ${
-                    formData.role === 'user'
-                      ? 'bg-indigo-600 text-white border-indigo-600 shadow-lg scale-105'
-                      : 'bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 border-gray-200 dark:border-gray-600 hover:border-indigo-300 hover:shadow-md'
-                  }`}
-                  disabled={isLoading}
-                >
-                  <User className="h-5 w-5" />
-                  <span className="font-medium">User</span>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setFormData(prev => ({ ...prev, role: 'admin' }))}
-                  className={`flex items-center justify-center space-x-2 p-4 rounded-xl border-2 transition-all duration-200 ${
-                    formData.role === 'admin'
-                      ? 'bg-indigo-600 text-white border-indigo-600 shadow-lg scale-105'
-                      : 'bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 border-gray-200 dark:border-gray-600 hover:border-indigo-300 hover:shadow-md'
-                  }`}
-                  disabled={isLoading}
-                >
-                  <Settings className="h-5 w-5" />
-                  <span className="font-medium">Admin</span>
-                </button>
               </div>
             </div>
 
@@ -279,12 +262,7 @@ const SignUpForm: React.FC = () => {
             </p>
           </div>
 
-          <div className="mt-4 text-center">
-            <div className="inline-flex items-center px-3 py-1 rounded-full text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 border border-blue-200 dark:border-blue-800 transition-colors duration-300">
-              <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
-              Demo: Registration will auto-login you
-            </div>
-          </div>
+
         </div>
       </div>
     </div>
